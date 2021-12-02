@@ -50,3 +50,16 @@ Column {data-width=350}
 Biogeography
 =====================================
 
+Help
+=====================================
+In order to download occurence datasets from Gbif with the provided script, you first have to set up your Gbif account credentials in your R.environ with the following steps:
+
+Set up Gbif credentials in R.environ:
+usethis::edit_r_environ()
+
+In the R.environ file, add the following keys and fill in the values with your Gbif account info:
+GBIF_USER=""
+GBIF_PWD=""
+GBIF_EMAIL=""
+
+Then restart R.
