@@ -1,30 +1,36 @@
 ---
 title: "GBIF dashboard"
-author: "Nicolas Henry"
-date: "02/12/2021"
-output: html_document
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+library(flexdashboard)
 ```
 
-## R Markdown
+Column {data-width=650}
+-----------------------------------------------------------------------
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+### Chart A
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+```{r}
 
-```{r cars}
-summary(cars)
 ```
 
-## Including Plots
+Column {data-width=350}
+-----------------------------------------------------------------------
 
-You can also embed plots, for example:
+### Chart B
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+### Chart C
+
+```{r}
+
+```
+
