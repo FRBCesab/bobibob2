@@ -1,33 +1,55 @@
 
-#' Import Gbif Occurence Data
+#' Find the taxon key corresponding to the group of interest
 #'
-#' @return 
-#' @export
+#' @param name The taxon name
+#' @param rank The taxon rank
+#' @return A taxon_key object containing the single identifier of the taxon in Gbif 
+#' @example
+#' find_taxon ("laminaria digitata", "species")
 #'
+find_taxon <- function (name, rank) {
+  rgbif::name_suggest(q=name, rank=rank)$data$key[1]
+}
 
 
-
-#Prepare occurence data dowload from Gbif
+#' Prepare occurrence data download from Gbif
+#'
+#' @return Metadata about the download, including download status to check when the download is ready.
+#' @example
+#' gbif_download_init()
+#'
 gbif_download_init <- function () {
-  
-  res <- rgbif::occ_download(
-    rgbif::pred('taxonKey', 7264332), 
+    res <- rgbif::occ_download(
+    rgbif::pred('taxonKey', taxon_key), 
     rgbif::pred('hasCoordinate', TRUE),
     user = gbif_user,
     pwd = gbif_pwd,
     email = gbif_mail
   )
+    return(res)
 }
 
-#Import data
-gbif_download <- function() {
-  
-  dat <- occ_download_get("0000796-171109162308116")
-  occ_download_import(dat)
+
+#' Check status of download preparation
+#' 
+#' @return Messages indicating the status of the download prep (preparing, running, succedded), then metadata about the download request once the preparation has succeeded.
+#' @example
+#' check_status()
+check_status <- function(){
+  rgbif::occ_download_wait(status)
+  rgbif::occ_download_meta(status)
 }
 
-#
 
-          
+#' Download occurrence data from gbif
+#' @param dl_key The single identifier of the download prepared with the function gbif_download_init (The Download key printed by the function rgbif::occ_download_meta(res))
+#' @return a zip file containing the occurrence data imported from Gbif
+#' @example
+#' gbif_download("0071104-210914110416597")
+#'
+gbif_download <- function(dl_key) {
+    dat <- rgbif::occ_download_get(dl_key)
+  rgbif::occ_download_import(dat)
+}
 
 

@@ -23,6 +23,7 @@ data_for_net <- function(){
 #' @return A taxonomic network
 
 taxo_network <- function(dat=data_for_net()){
+  #dat=data_for_net()
   require(data.table)
   require(visNetwork, quietly = TRUE)
   
@@ -30,7 +31,7 @@ taxo_network <- function(dat=data_for_net()){
   
   rank_taxo <- lapply(ranks,function(X){
     data.table(rank=X,id=dat[get(X)!="",get(X)])
-  }) |> rbindlist()
+  }) |> rbindlist() |> unique()
   
   dat_edges <- lapply(1:(length(ranks)-1),function(i){
     dat[,.SD,.SDcols=ranks[c(i,i+1)]] |> unique()
@@ -44,11 +45,14 @@ taxo_network <- function(dat=data_for_net()){
   
   dat_nodes <- data.table(id=c(dat_edges[,to],dat_edges[,from]) |> unique())
   dat_nodes[,label:=sub("^.+;","",id)]
+  dat_nodes <- merge(dat_nodes,rank_taxo,by="id")
+  dat_nodes[,title := paste0("<p>rank: ", rank,'<br><a href="dashboard/focus/',label,'.html">More info</a></p>')]
   
   visNetwork(dat_nodes, dat_edges, width = "100%") |>
     visEdges(arrows = "to")
 }
 
+  
 #' Generate subseted table for focus
 #'
 #' @return A subseted table

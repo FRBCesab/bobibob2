@@ -8,7 +8,7 @@ output:
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
-source("R/taxo-network.R")
+source(here::here("R","taxo-network.R"))
 dat <- data_for_focus("Chromista;Ochrophyta;Phaeophyceae;Laminariales;Laminariaceae;Laminaria;Laminaria_japonica")
 
 library(dplyr)
