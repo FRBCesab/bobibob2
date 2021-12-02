@@ -23,32 +23,12 @@ We explore their diversity and biography using an interactive dashboard, which c
 Taxonomy
 ===================================== 
 
-Column {data-width=650}
------------------------------------------------------------------------
-
 ### Chart A
 
 ```{r}
 taxo_network()
 ```
 
-Column {data-width=350}
------------------------------------------------------------------------
-
-### Chart B
-
-```{r}
-
-```
-
-### Chart C
-
-```{r}
-
-```
-
-Biogeography
-=====================================
 
 Help
 =====================================
