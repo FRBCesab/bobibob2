@@ -1,16 +1,25 @@
 Package: bobibob2
 Type: Package
-Title: The Title of the Project
+Title:  A Dashboard to Visualise Macroalgae Biogeography
 Version: 0.0.0.9000
 Authors@R: c(
     person(given   = "Nicolas",
            family  = "Henry",
            role    = c("aut", "cre"),
            email   = "nicolashenry50@gmail.com",
-           comment = c(ORCID = "{{orcid}}")))
-Description: A paragraph providing a full description of the project (on several 
-    lines...)
-URL: https://github.com/nhenry50/bobibob2
+           comment = c(ORCID = "{{0000-0002-7702-1382}}")),
+    person(given   = "Anne",
+           family  = "Dubéarnès",
+           role    = c("aut", "cre"),
+           email   = "ndubearna@tcd.ie",
+           comment = c(ORCID = "{{0000-0002-5754-9235}}")),
+    person(given   = "Lydia",
+           family  = "White",
+           role    = c("aut", "cre"),
+           email   = "lydiaw140@gmailcom",
+           comment = c(ORCID = "{{0000-0002-7531-5168}}")))
+Description: This package will do amazing things... to be updated. 
+  URL: https://github.com/nhenry50/bobibob2
 BugReports: https://github.com/nhenry50/bobibob2/issues
 License: GPL (>= 2)
 Encoding: UTF-8
