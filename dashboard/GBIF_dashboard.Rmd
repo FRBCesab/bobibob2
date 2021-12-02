@@ -13,7 +13,7 @@ library(flexdashboard)
 Introduction
 ===================================== 
 
-# Exploring the Biogeography of Kelp Forests 
+#### Exploring the Biogeography of Kelp Forests 
 
 Kelp forests are extensive underwater habitats that range along 25% of the world’scoastlines, providing valuable resources, habitat, and services for coastal communities.
 Kelps are useful sentinels of change because they are highly responsive to environmental conditions and have declined across many ecoregions. 
