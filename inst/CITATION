@@ -1,0 +1,10 @@
+citHeader("To cite bobibob2 in publications use:")
+
+bibentry(
+  bibtype = "Manual",
+  title   = "bobibob2: {An} {R} package to ...",
+  author  = c(person("Henry Nicolas")),
+  year    = "2021",
+  note    = "R package version 0.0.0.9000",
+  url     = "https://github.com/nhenry50/bobibob2"
+)

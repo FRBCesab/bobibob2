@@ -1,0 +1,11 @@
+^renv$
+^renv\.lock$
+^bobibob2\.Rproj$
+^\.Rproj\.user$
+^\.DS_Store$
+^LICENSE\.md$
+^data$
+^outputs$
+^figures$
+^rscripts$
+^paper$
