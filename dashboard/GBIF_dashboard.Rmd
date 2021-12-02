@@ -29,7 +29,7 @@ Column {data-width=650}
 ### Chart A
 
 ```{r}
-
+taxo_network()
 ```
 
 Column {data-width=350}
