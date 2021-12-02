@@ -10,6 +10,59 @@ output:
 library(flexdashboard)
 source("R/taxo-network.R")
 dat <- data_for_focus("Chromista;Ochrophyta;Phaeophyceae;Laminariales;Laminariaceae;Laminaria;Laminaria_japonica")
+
+library(dplyr)
+library(lubridate)
+library(tidyr)
+
+
+most_abund_realm<- dat %>% 
+  filter(REALM != "NA") %>% 
+  mutate(year = round_date(eventDate,unit = "year")) %>%
+  group_by(REALM) %>%
+  summarise(obs = n()) %>% 
+  dplyr::arrange(., desc(obs)) %>%
+  dplyr::slice_head(n = 5) %>%
+  select(REALM)
+
+observations<- dat %>% 
+  filter(REALM != "NA") %>% 
+  mutate(year = round_date(eventDate,unit = "year")) %>%
+  group_by(REALM, year) %>%
+  summarise(obs = n()) %>% 
+  pivot_wider(names_from = REALM, values_from = obs) %>% 
+  data.frame(row.names = "year") %>%
+  select(most_abund_realm$REALM)
+
+
+library(dygraphs)
+dygraph(observations, main = "") %>% 
+  dyRangeSelector()
+
+
+
+data.frame(dat$) 
+
+observations<- dat %>% 
+  mutate(month = format(eventDate, "%m"), year = format(eventDate, "%Y")) %>%
+  group_by(month, year) %>%
+  summarise(obs = n()) 
+
+zoo::as.xts(dat[,1])
+
+library(zoo)
+qxts <- xts(q[,-1], order.by=q[,1])
+ 
+ 
+month.abb(observations$month)
+
+
+group_by(eventDate) |>
+  summarise(obs = n())
+
+max(observations$eventDate)
+
+
 ```
 
 Column {data-width=650}
