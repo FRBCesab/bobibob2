@@ -198,6 +198,13 @@
       "Repository": "CRAN",
       "Hash": "55624ed409e46c5f358b2c060be87f67"
     },
+    "foreign": {
+      "Package": "foreign",
+      "Version": "0.8-81",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "74628ea7a3be5ee8a7b5bb0a8e84882e"
+    },
     "fs": {
       "Package": "fs",
       "Version": "1.5.1",
@@ -345,6 +352,32 @@
       "Repository": "CRAN",
       "Hash": "41287f1ac7d28a92f0a286ed507928d3"
     },
+    "maps": {
+      "Package": "maps",
+      "Version": "3.4.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "b3d98a967ec17c80f795719529812fa0"
+    },
+    "maptools": {
+      "Package": "maptools",
+      "Version": "1.1-2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "41e7097a7a02db986344eeca0d8a49ac"
+    },
+    "meowR": {
+      "Package": "meowR",
+      "Version": "0.6.2",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "jebyrnes",
+      "RemoteRepo": "meowR",
+      "RemoteRef": "master",
+      "RemoteSha": "0f1d559478464f1449ef2473f8626a7e6bcb4f10",
+      "Hash": "70fef6bf195335f98c10eb76b855d02d"
+    },
     "mgcv": {
       "Package": "mgcv",
       "Version": "1.8-38",
@@ -368,10 +401,10 @@
     },
     "nlme": {
       "Package": "nlme",
-      "Version": "3.1-153",
+      "Version": "3.1-152",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "2d632e0d963a653a0329756ce701ecdd"
+      "Hash": "35de1ce639f20b5e10f7f46260730c65"
     },
     "oai": {
       "Package": "oai",
@@ -485,6 +518,13 @@
       "Repository": "CRAN",
       "Hash": "947e4e02a79effa5d512473e10f41797"
     },
+    "sp": {
+      "Package": "sp",
+      "Version": "1.4-6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "ce8613f4e8c84ef4da9eba65b874ebe9"
+    },
     "stringi": {
       "Package": "stringi",
       "Version": "1.7.6",
@@ -561,6 +601,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "55e157e2aa88161bdb0754218470d204"
+    },
+    "visNetwork": {
+      "Package": "visNetwork",
+      "Version": "2.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "99b515a03efb8dcc4e4be337f37bf087"
     },
     "wellknown": {
       "Package": "wellknown",
