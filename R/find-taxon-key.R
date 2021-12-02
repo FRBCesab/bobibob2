@@ -9,4 +9,4 @@
 name<- function ()
 rank <- function ()
 
-key <- rgbif::name_suggest(q=name, rank=rank)
+taxon_key <- rgbif::name_suggest(q=name, rank=rank)
