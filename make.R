@@ -1,5 +1,3 @@
-source("R/taxo-network.R")
-
 if(!file.exists(here::here("images","kelp_intro.jpg"))){
   download.file("https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Seaweed_in_Ensenada_Baja_California.jpg/640px-Seaweed_in_Ensenada_Baja_California.jpg",
                 destfile = here::here("images","kelp_intro.jpg"))
