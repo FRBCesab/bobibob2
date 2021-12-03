@@ -5,8 +5,6 @@ if(!file.exists(here::here("images","kelp_intro.jpg"))){
                 destfile = here::here("images","kelp_intro.jpg"))
 }
 
-# rmarkdown::render(input = here::here("dashboard","focus","Laminaria_japonica.Rmd"))
-
 node_list <- data_for_net_nodes_edges()[[1]][,id]
 
 for(i in node_list){
