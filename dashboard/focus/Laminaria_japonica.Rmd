@@ -47,10 +47,19 @@ Column {data-width=650}
 ## Abundance per ecoregion 
 
 library(ggplot2)
-library(plotly)
-p <- ggplot(data = diamonds, aes(x = cut, fill = clarity)) +
-            geom_bar(position = "dodge")
-ggplotly(p)
+
+abundance <-dat %>% 
+  dplyr::filter(REALM != "NA") %>% 
+  dplyr::mutate(year = lubridate::round_date(eventDate,unit = "year")) %>%
+  dplyr::group_by(REALM) %>%
+  dplyr::summarise(obs = n()) %>%
+  dplyr::arrange(., desc(obs))
+
+p <- ggplot(data = abundance, aes(y = REALM, x = obs)) +
+        geom_col()+
+  scale_y_discrete(limits=abundance$REALM |> rev())
+
+plotly::ggplotly(p)
 ```
 
 Column {data-width=350}
