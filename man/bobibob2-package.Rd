@@ -6,7 +6,7 @@
 \alias{bobibob2-package}
 \title{bobibob2: A Dashboard to Visualise Macroalgae Biogeography}
 \description{
-This package will do amazing things... to be updated. URL: https://github.com/nhenry50/bobibob2
+Allows exploration of the diversity and global distribution of all Kelp species, Laminaricaeae (those available in GBIF, Global Biodiversity Information Faciltity; https://www.gbif.org). Data is extracted directly from GBIF, determined by the desired taxa parameters - i.e. Laminaricaeae. The taxonomic structure is visualised as a network. Each node in the taxonomy network links to an html displaying a range of interactive figures, summarising occurance of the species of interest in time and space. For details on how to adapt this dashboard, including downloading desired taxa data see github. URL: https://github.com/nhenry50/bobibob2
 }
 \seealso{
 Useful links:
