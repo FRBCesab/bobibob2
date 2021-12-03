@@ -13,6 +13,10 @@ library(flexdashboard)
 source(here::here("R","taxo-network.R"))
 dat <- data_for_focus("Chromista;Ochrophyta;Phaeophyceae;Laminariales;Laminariaceae;Laminaria;Laminaria_japonica")
 
+REALM_list<-dat[!is.na(REALM),unique(REALM)|>as.character()]
+my_cols<-RColorBrewer::brewer.pal(12,"Set3")  
+names(my_cols) <- REALM_list
+  
 most_abund_realm<- dat %>% 
   dplyr::filter(REALM != "NA") %>% 
   dplyr::mutate(year = round_date(eventDate,unit = "year")) %>%
@@ -31,10 +35,12 @@ observations<- dat %>%
   tibble::column_to_rownames(var = "year") %>%
   dplyr::select(most_abund_realm$REALM)
 
-
+colours<- dplyr::left_join(most_abund_realm, 
+    tibble::rownames_to_column(as.data.frame(my_cols), "REALM"))
+  
 dygraphs::dygraph(observations, main = "") %>% 
-  dygraphs::dyRangeSelector()
-
+  dygraphs::dyRangeSelector()%>% 
+  dyOptions(colors = colours$my_cols) 
 ```
 
 Column {data-width=650}
@@ -53,11 +59,13 @@ abundance <-dat %>%
   dplyr::mutate(year = lubridate::round_date(eventDate,unit = "year")) %>%
   dplyr::group_by(REALM) %>%
   dplyr::summarise(obs = n()) %>%
-  dplyr::arrange(., desc(obs))
+  dplyr::arrange(., desc(obs))%>%
+  dplyr::filter(obs > 0 )
 
 p <- ggplot(data = abundance, aes(y = REALM, x = obs)) +
-        geom_col()+
-  scale_y_discrete(limits=abundance$REALM |> rev())
+        geom_col(aes(fill = REALM))+
+  scale_y_discrete(limits=abundance$REALM |> rev()) +
+  scale_fill_manual(values = my_cols)
 
 plotly::ggplotly(p)
 ```
