@@ -12,3 +12,8 @@ Messages indicating the status of the download prep (preparing, running, succedd
 \description{
 Check status of download preparation
 }
+\examples{
+\dontrun{
+check_status()
+}
+}

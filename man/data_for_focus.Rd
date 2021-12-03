@@ -4,7 +4,7 @@
 \alias{data_for_focus}
 \title{Generate a minimal table for the per taxo dashboards}
 \usage{
-data_for_focus(tax)
+data_for_focus(tax, dat)
 }
 \value{
 A minimal data.table with MEOW info

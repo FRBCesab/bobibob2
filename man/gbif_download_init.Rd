@@ -12,3 +12,9 @@ Metadata about the download, including download status to check when the downloa
 \description{
 Prepare occurrence data download from Gbif
 }
+\examples{
+\dontrun{
+gbif_download_init()
+}
+
+}

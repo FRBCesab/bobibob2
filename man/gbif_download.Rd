@@ -15,3 +15,9 @@ a zip file containing the occurrence data imported from Gbif
 \description{
 Download occurrence data from gbif
 }
+\examples{
+\dontrun{
+gbif_download("0071104-210914110416597")
+}
+
+}

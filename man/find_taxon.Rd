@@ -17,3 +17,9 @@ A taxon_key object containing the single identifier of the taxon in Gbif
 \description{
 Find the taxon key corresponding to the group of interest
 }
+\examples{
+\dontrun{
+find_taxon ("laminaria digitata", "species")
+}
+
+}
