@@ -9,7 +9,7 @@ gbif_mail <- Sys.getenv("GBIF_EMAIL")
 taxon_key <- find_taxon("laminariales", "order") #first argument : "taxon name", second argument "rank"
 
 
-#Prepare occurence data dowload from Gbif
+#Prepare occurrence data download from Gbif
 status<-gbif_download_init()
 
 
@@ -17,24 +17,19 @@ status<-gbif_download_init()
 check_status() # this step will run until STATUS = SUCCEEDED
 
 
-#Retreive Download key 
-dl_key <-"0071825-210914110416597" #enter the key manually from the metadata called by the occ_download_meta() function
+#Retrieve Download key
+dl_key <-"0071825-210914110416597" #enter the key manually from the metadata displayed after check_status() has finished running
 
 
-#Once download is ready (occ_download_meta$ = SUCCEEDED), fetch and import data
+#Fetch and import data
 gbif_download(dl_key)
 
 
-#Unzip in data/occurrence folder and delete zip file from root (enter zip file name manually)
-unzip(zipfile = "0071825-210914110416597.zip", exdir = "./data/occurrence")
+#Unzip in data/occurrence folder and delete zip file from root 
+unzip(zipfile = "0071825-210914110416597.zip", exdir = "./data/occurrence") #enter zip file name manually
 unlink("0071825-210914110416597.zip")
-#The file containing the occurrence data is "occurence.txt"
+#The file containing the occurrence data is "occurrence.txt"
 
 
-#Create occurrence df
-occurrence <- data.table::fread("data/occurrence/occurrence.txt")
-
-#Zip occurrence file to make it <100Mb (because of Github file size limitation) and move it up one level to /data
+#Zip occurrence file to make it <100Mb (because of Github file size limitation) and move it back up one level to /data
 R.utils::gzip("data/occurrence/occurrence.txt", destname = "data/occurrence.gz", remove = FALSE)
-
-
