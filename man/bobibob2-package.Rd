@@ -4,20 +4,19 @@
 \name{bobibob2-package}
 \alias{bobibob2}
 \alias{bobibob2-package}
-\title{bobibob2: The Title of the Project}
+\title{bobibob2: A Dashboard to Visualise Macroalgae Biogeography}
 \description{
-A paragraph providing a full description of the project (on several lines...)
+This package will do amazing things... to be updated. URL: https://github.com/nhenry50/bobibob2
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/nhenry50/bobibob2}
   \item Report bugs at \url{https://github.com/nhenry50/bobibob2/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Nicolas Henry \email{nicolashenry50@gmail.com} (\href{https://orcid.org/{{orcid}}}{ORCID})
+\strong{Maintainer}: Nicolas Henry \email{nicolashenry50@gmail.com} (\href{https://orcid.org/{{0000-0002-7702-1382}}}{ORCID})
 
 }
 \keyword{internal}
