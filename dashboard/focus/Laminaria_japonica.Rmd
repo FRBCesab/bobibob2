@@ -40,7 +40,8 @@ colours<- dplyr::left_join(most_abund_realm,
   
 dygraphs::dygraph(observations, main = "") %>% 
   dygraphs::dyRangeSelector()%>% 
-  dyOptions(colors = colours$my_cols) 
+  dyOptions(colors = colours$my_cols) %>% 
+  dyAxis("y", label = "Observations per year")
 ```
 
 Column {data-width=650}
@@ -65,7 +66,9 @@ abundance <-dat %>%
 p <- ggplot(data = abundance, aes(y = REALM, x = obs)) +
         geom_col(aes(fill = REALM))+
   scale_y_discrete(limits=abundance$REALM |> rev()) +
-  scale_fill_manual(values = my_cols)
+  scale_fill_manual(values = my_cols) +
+  scale_x_continuous(name="Observations")
+  
 
 plotly::ggplotly(p)
 ```
@@ -76,6 +79,23 @@ Column {data-width=350}
 ### Chart B
 
 ```{r}
+
+## global occurrence 
+
+library(leaflet)
+
+leaflet(options = leafletOptions(minZoom = 0, maxZoom = 18)) %>% 
+  leaflet() %>% addCircles(data = dat, lat = ~ decimalLatitude, lng = ~ decimalLongitude, color = "black")%>% 
+  addTiles()
+
+# colours <- tibble::rownames_to_column(as.data.frame(my_cols), "REALM")
+# pal <- colorFactor(c(colours$my_cols), domain = c(colours$REALM))
+# factpal <- colorFactor(colours$my_cols, colours$REALM)
+
+# leaflet(options = leafletOptions(minZoom = 0, maxZoom = 18)) %>% 
+#  leaflet() %>% addCircles(data = dat, lat = ~ decimalLatitude, lng = ~ decimalLongitude, color = ~factpal(REALM))%>% 
+#  addTiles() %>% 
+#  addLegend("bottomright", pal = factpal, values = ~REALM)
 
 ```
 
