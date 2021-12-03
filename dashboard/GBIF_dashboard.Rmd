@@ -32,9 +32,11 @@ taxo_network()
 ```
 
 
-Help
+Help - DIY
 =====================================
-In order to download occurence datasets from Gbif with the provided script, you first have to set up your Gbif account credentials in your R.environ with the following steps:
+If you want to recreate this dashboard with your group of interest, the code is available on [Github](https://github.com/nhenry50/bobibob2).
+
+In order to download occurrence datasets from Gbif with the provided script, start by setting up your Gbif account credentials in your R environment with the following steps:
 
 Set up Gbif credentials in R.environ:
 usethis::edit_r_environ()
