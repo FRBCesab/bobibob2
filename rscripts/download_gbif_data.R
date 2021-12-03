@@ -23,4 +23,4 @@ gbif_download(dl_key)
 #Unzip in data/occurrence folder and delete zip file from root (enter zip file name manually)
 unzip(zipfile = "0071182-210914110416597.zip", exdir = "./data/occurrence")
 unlink("0071182-210914110416597.zip")
-
+#The file containing the occurrence data is "occurence.txt"
