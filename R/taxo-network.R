@@ -1,6 +1,6 @@
-#' Generate data for taxonomic network
+#' Preparation of the raw data for the project
 #'
-#' @return A formatted table
+#' @return A data.table extra columns for taxonomy
 
 data_for_net <- function(){
   require(data.table)
@@ -18,9 +18,9 @@ data_for_net <- function(){
   dat
 }
 
-#' Node edge data
+#' Node and edge data for the taxonomic network
 #'
-#' @return List of tables
+#' @return List of data.tables
 
 data_for_net_nodes_edges <- function(dat=data_for_net()){
   require(data.table)
@@ -53,9 +53,9 @@ data_for_net_nodes_edges <- function(dat=data_for_net()){
   list(dat_nodes[],dat_edges)
 }
 
-#' Generate a taxonomic network
+#' Generate a interactive taxonomic network
 #'
-#' @return A taxonomic network
+#' @return A interactive taxonomic network
 
 taxo_network <- function(edge_and_node=data_for_net_nodes_edges()){
   visNetwork(edge_and_node[[1]], edge_and_node[[2]], width = "100%") |>
@@ -63,9 +63,9 @@ taxo_network <- function(edge_and_node=data_for_net_nodes_edges()){
 }
 
 
-#' Generate subseted table for focus
+#' Generate a minimal table for the per taxo dashboards
 #'
-#' @return A subseted table
+#' @return A minimal data.table with MEOW info
 #' 
 #' 
 data_for_focus <- function(tax){
