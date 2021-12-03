@@ -3,15 +3,16 @@ output:
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
+params:
+  tax: ""
 ---
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
-label <- sub("^.+;","",tax)
-
+label <- sub("^.+;","",params$tax)
 
 source(here::here("R","taxo-network.R"))
-dat <- data_for_focus(tax)
+dat <- data_for_focus(params$tax)
 ```
 
 ---
@@ -24,7 +25,9 @@ Column {data-width=650}
 ### Chart A
 
 ```{r}
-
+if(nrow(dat)!=0){
+  
+}
 ```
 
 Column {data-width=350}
