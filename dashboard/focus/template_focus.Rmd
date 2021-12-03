@@ -5,24 +5,26 @@ output:
     vertical_layout: fill
 params:
   tax: "Chromista;Ochrophyta;Phaeophyceae;Laminariales;Laminariaceae;Laminaria;Laminaria_japonica"
+  bob: ""
 ---
 
 ```{r setup, include=FALSE}
 # params <- NULL
-# params$tax <- "Chromista;Ochrophyta;Phaeophyceae;Laminariales;Laminariaceae;Laminaria;Laminaria_digitata"
+# params$tax <- "Chromista;Ochrophyta;Phaeophyceae"
+# params$bob <- data_for_net()
 
 library(flexdashboard)
 label <- sub("^.+;","",params$tax)
 
 source(here::here("R","taxo-network.R"))
-dat <- data_for_focus(params$tax)
+dat <- data_for_focus(params$tax,params$bob)
 ```
 
 ```{r}
 if(nrow(dat)!=0){
   
-  REALM_list<-dat[!is.na(REALM),unique(REALM)|>as.character()]
-  my_cols<-RColorBrewer::brewer.pal(length(REALM_list),"Set3")  
+  REALM_list <- dat[!is.na(REALM),unique(REALM)|>as.character()]
+  my_cols <- RColorBrewer::brewer.pal(length(REALM_list),"Set3")[1:length(REALM_list)] 
   names(my_cols) <- REALM_list
     
   most_abund_realm<- dat |> 
@@ -70,7 +72,11 @@ if(nrow(dat)!=0){
   library(leaflet)
 
   leaflet(options = leafletOptions(minZoom = 0, maxZoom = 18)) |> 
-    leaflet() |> addCircles(data = dat, lat = ~ decimalLatitude, lng = ~ decimalLongitude, color = "black")|> 
+    leaflet() |>
+    addCircles(data = dat,
+               lat = ~ decimalLatitude,
+               lng = ~ decimalLongitude,
+               color = "black")|>
     addTiles()
 }
 ```

@@ -5,7 +5,7 @@
 data_for_net <- function(){
   require(data.table)
   ranks <- c("kingdom","phylum","class","order","family","genus","species")
-  dat <- fread(here::here("data","laminaria_occurrance.csv.gz"))
+  dat <- fread(here::here("data","occurrence.gz"))
   dat[,species:=sub(" ","_",species)]
   dat[,full_taxo:=paste(kingdom,phylum,class,order,family,genus,species,sep=";")]
   dat[,full_taxo:=sub(";+$","",full_taxo)]
@@ -68,15 +68,14 @@ taxo_network <- function(edge_and_node=data_for_net_nodes_edges()){
 #' @return A minimal data.table with MEOW info
 #' 
 #' 
-data_for_focus <- function(tax){
-  #tax <- "Chromista;Ochrophyta;Phaeophyceae;Laminariales;Laminariaceae;Laminaria;Laminaria_atrofulva"
+data_for_focus <- function(tax,dat){
+  #tax <- "Chromista;Ochrophyta;Phaeophyceae;Laminariales;Laminariaceae;Laminaria;Laminaria_japonica"
   
   require(meowR)
   require(data.table)
   
   last_rank_taxo <- sub("^.+;","",tax)
   
-  dat <- data_for_net()
   dat <- dat[grep(tax,full_taxo),.(eventDate,decimalLatitude,decimalLongitude)] |> 
     na.omit()
   
