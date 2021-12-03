@@ -36,7 +36,7 @@ gbif_download_init <- function () {
 
 #' Check status of download preparation
 #' 
-#' @return Messages indicating the status of the download prep (preparing, running, succedded), then metadata about the download request once the preparation has succeeded.
+#' @return Messages indicating the status of the download prep (preparing, running, succeeded), then metadata about the download request once the preparation has succeeded.
 #' @examples
 #' \dontrun{
 #' check_status()
