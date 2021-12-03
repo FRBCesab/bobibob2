@@ -32,7 +32,7 @@ taxo_network()
 ```
 
 
-Help - DIY
+DIY
 =====================================
 If you want to recreate this dashboard with your group of interest, the code is available on [Github](https://github.com/nhenry50/bobibob2).
 
