@@ -49,7 +49,7 @@ check_status <- function(){
 #'
 gbif_download <- function(dl_key) {
     dat <- rgbif::occ_download_get(dl_key)
-  rgbif::occ_download_import(dat)
+  rgbif::occ_download_import(dat, fill = TRUE) # If fill = TRUE then in case the rows have unequal length, blank fields are implicitly filled. (passed on to fill parameter in data.table::fread)
 }
 
 
