@@ -8,6 +8,9 @@ params:
 ---
 
 ```{r setup, include=FALSE}
+params <- NULL
+params$tax <- "Chromista;Ochrophyta;Phaeophyceae;Laminariales;Laminariaceae;Laminaria;Laminaria_digitata"
+
 library(flexdashboard)
 label <- sub("^.+;","",params$tax)
 
