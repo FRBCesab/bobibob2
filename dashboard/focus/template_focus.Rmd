@@ -8,8 +8,8 @@ params:
 ---
 
 ```{r setup, include=FALSE}
-params <- NULL
-params$tax <- "Chromista;Ochrophyta;Phaeophyceae;Laminariales;Laminariaceae;Laminaria;Laminaria_digitata"
+# params <- NULL
+# params$tax <- "Chromista;Ochrophyta;Phaeophyceae;Laminariales;Laminariaceae;Laminaria;Laminaria_digitata"
 
 library(flexdashboard)
 label <- sub("^.+;","",params$tax)
@@ -20,39 +20,39 @@ dat <- data_for_focus(params$tax)
 
 ```{r}
 if(nrow(dat)!=0){
-  REALM_list<-dat[!is.na(REALM),unique(REALM)|>as.character()]
-my_cols<-RColorBrewer::brewer.pal(12,"Set3")  
-names(my_cols) <- REALM_list
   
-most_abund_realm<- dat |> 
-  dplyr::filter(REALM != "NA") |> 
-  dplyr::mutate(year = lubridate::round_date(eventDate,unit = "year")) |>
-  dplyr::group_by(REALM) |>
-  dplyr::summarise(obs = dplyr::n()) |> 
-  dplyr::arrange(dplyr::desc(obs)) |>
-  dplyr::slice_head(n = 5) |>
-  dplyr::select(REALM)
-
-observations<- dat |> 
-  dplyr::filter(REALM != "NA") |> 
-  dplyr::mutate(year = lubridate::round_date(eventDate,unit = "year")) |>
-  dplyr::group_by(REALM, year) |>
-  dplyr::summarise(obs = dplyr::n()) |> 
-  tidyr::pivot_wider(names_from = REALM, values_from = obs) |> 
-  tibble::column_to_rownames(var = "year") |>
-  dplyr::select(most_abund_realm$REALM)
-
-abundance <-dat |> 
-  dplyr::filter(REALM != "NA") |> 
-  dplyr::mutate(year = lubridate::round_date(eventDate,unit = "year")) |>
-  dplyr::group_by(REALM) |>
-  dplyr::summarise(obs = dplyr::n()) |>
-  dplyr::arrange(dplyr::desc(obs))|>
-  dplyr::filter(obs > 0 )
-
-colours<- dplyr::left_join(most_abund_realm, 
-    tibble::rownames_to_column(as.data.frame(my_cols), "REALM"))
-
+  REALM_list<-dat[!is.na(REALM),unique(REALM)|>as.character()]
+  my_cols<-RColorBrewer::brewer.pal(length(REALM_list),"Set3")  
+  names(my_cols) <- REALM_list
+    
+  most_abund_realm<- dat |> 
+    dplyr::filter(REALM != "NA") |> 
+    dplyr::mutate(year = lubridate::round_date(eventDate,unit = "year")) |>
+    dplyr::group_by(REALM) |>
+    dplyr::summarise(obs = dplyr::n()) |> 
+    dplyr::arrange(dplyr::desc(obs)) |>
+    dplyr::slice_head(n = 5) |>
+    dplyr::select(REALM)
+  
+  observations<- dat |> 
+    dplyr::filter(REALM != "NA") |> 
+    dplyr::mutate(year = lubridate::round_date(eventDate,unit = "year")) |>
+    dplyr::group_by(REALM, year) |>
+    dplyr::summarise(obs = dplyr::n()) |> 
+    tidyr::pivot_wider(names_from = REALM, values_from = obs) |> 
+    tibble::column_to_rownames(var = "year") |>
+    dplyr::select(most_abund_realm$REALM)
+  
+  abundance <-dat |> 
+    dplyr::filter(REALM != "NA") |> 
+    dplyr::mutate(year = lubridate::round_date(eventDate,unit = "year")) |>
+    dplyr::group_by(REALM) |>
+    dplyr::summarise(obs = dplyr::n()) |>
+    dplyr::arrange(dplyr::desc(obs))|>
+    dplyr::filter(obs > 0 )
+  
+  colours<- dplyr::left_join(most_abund_realm, 
+      tibble::rownames_to_column(as.data.frame(my_cols), "REALM"))
 }
 ```
 
@@ -69,9 +69,9 @@ Column {data-width=650}
 if(nrow(dat)!=0){
   library(leaflet)
 
-leaflet(options = leafletOptions(minZoom = 0, maxZoom = 18)) |> 
-  leaflet() |> addCircles(data = dat, lat = ~ decimalLatitude, lng = ~ decimalLongitude, color = "black")|> 
-  addTiles()
+  leaflet(options = leafletOptions(minZoom = 0, maxZoom = 18)) |> 
+    leaflet() |> addCircles(data = dat, lat = ~ decimalLatitude, lng = ~ decimalLongitude, color = "black")|> 
+    addTiles()
 }
 ```
 
