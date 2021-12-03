@@ -38,12 +38,12 @@ If you want to recreate this dashboard with your group of interest, the code is 
 
 In order to download occurrence datasets from Gbif with the provided script, start by setting up your Gbif account credentials in your R environment with the following steps:
 
-Set up Gbif credentials in R.environ:
+Set up Gbif credentials in R.environ:  
 usethis::edit_r_environ()
 
-In the R.environ file, add the following keys and fill in the values with your Gbif account info:
-GBIF_USER=""
-GBIF_PWD=""
-GBIF_EMAIL=""
+In the R.environ file, add the following keys and fill in the values with your Gbif account info:  
+GBIF_USER=""  
+GBIF_PWD=""  
+GBIF_EMAIL=""  
 
 Then restart R.
